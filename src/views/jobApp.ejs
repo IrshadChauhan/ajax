@@ -1,0 +1,1169 @@
+<input type="text" id="jobid" hidden>
+<form action="/show" method="post" onsubmit="return validateform()">
+
+    <body>
+        <a href="/"> Insert another record </a>
+        <center>
+            <h1>Job Application Form</h1>
+        </center>
+        <center>
+            <!--Basic Details-->
+            <fieldset id="basicdetail">
+                <legend>
+                    Basic Details:
+                </legend>
+                <table>
+                    <tr>
+                        <td><label>First Name:</label></td>
+                        <td><input type="text" id="fname" name="fname" placeholder="Enter your name"></td>
+
+                        <td><label>Last Name:</label></td>
+                        <td><input type="text" id="lname" name="lname" placeholder="Enter your last name"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><br></td>
+                    </tr>
+                    <tr>
+                        <td><label>Designation</label></td>
+                        <td><input type="text" id="deg" name="deg" placeholder="Enter your Designation"></td>
+
+                        <td><label>Address 1</label></td>
+                        <td><input type="text" id="add1" name="add1" placeholder="Enter your address"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><br></td>
+                    </tr>
+                    <tr>
+                        <td><label>Email:</label></td>
+                        <td><input type="text" id="email" name="email" placeholder="Enter your email"></td>
+
+                        <td><label>Address 2</label></td>
+                        <td><input type="text" id="add2" name="add2" placeholder="Enter your address"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><br></td>
+                    </tr>
+                    <tr>
+                        <td><label>Phone Number:</label></td>
+                        <td><input type="text" name="phn_no" placeholder="Enter your phone number" maxlength="10"
+                                id="phn_no"></td>
+                        <td><label>state</label></td>
+                        <td> <select name="state" id="state">
+                                <option value="Gujarat">"Gujarat"</option>
+                                <option value="Maharastra">Maharastra</option>
+                            </select></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td><label>City</label></td>
+                        <td> <input type="text" id="ci" name="city"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><br></td>
+                    </tr>
+                    <tr>
+                        <td><label>Gender:</label></td>
+                        <td>Male<input type="radio" value="Male" name="gen" id="genm">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            Female<input type="radio" value="Female" name="gen" id="genf"> </td>
+
+                        <td><label>Zip Code:</label></td>
+                        <td><input type="text" placeholder="enter your zip code" id="zip" name="zipcode"></input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><br></td>
+                    </tr>
+                    <tr>
+                        <td><label>RelationShip Status</label></td>
+                        <td> <select name="rela" id="rela">
+                                <option value="single">single</option>
+                                <option value="Married">married</option>
+
+                            </select></td>
+                        <td><label>Date of Birth:</label></td>
+                        <td><input type="date" id="bod" name="bod"></input></td>
+                    </tr>
+                </table>
+                <input type="button" value="save & next" onclick="loadbasic()">
+            </fieldset>
+
+            <fieldset id="education">
+                <legend>
+                    Education Details
+                </legend>
+                <table id="mytable">
+                    <tr>
+                        <td><input type="hidden" name="ecounter" id="ecounter" value=2></td>
+                        <td colspan="4"><input type="button" style="float: right;" onclick="addrow()" value="+">
+                        </td>
+                    </tr>
+                    <tr id="edu1">
+                        <td><Label id="course">Course Name</Label>&nbsp;&nbsp;
+                            <select id='course1' name='course1'>
+                                <option value="None">None</option>
+                                <option value="ssc">ssc</option>
+                                <option value="hsc">hsc</option>
+                                <option value="bachelor">bachelor</option>
+                                <option value="master">master</option>
+                            </select>
+                        </td>
+                        <td><Label>University</Label>&nbsp;&nbsp;<input type="text" name="uni1"
+                                id="board_or_university1" size="10"></td>
+                        <td><Label>Passing Year</Label>&nbsp;&nbsp;<input type="text" name="pss1" id="pass_year1"
+                                size="10"></td>
+                        <td><Label>Percentage</Label>&nbsp;&nbsp;<input type="text" name="per1" id="percentege1"
+                                size="10"></td>
+                    </tr>
+                    <br>
+                </table>
+                <!-- <input type="button" value="prev" onclick="wizard('education','basicdetail')"> -->
+                <input type="button" value="save & next" onclick="loadeducation()">
+            </fieldset>
+
+            <fieldset id="workexperience">
+                <legend>
+                    Work experience
+                </legend>
+                <table id="worktable">
+                    <tr>
+                        <td><input type="hidden" name="wcounter" id="wcounter" value=2></td>
+                    <tr>
+                        <td colspan="5"><input type="button" style="float: right;" onclick="addwork()" value="+">
+                        </td>
+                    </tr>
+                    <tr id="work1">
+                        <td><Label>Company Name</Label>&nbsp;&nbsp;<input type="text" id="c_nm1" name="c_nm1"></td>
+                        <td><Label>Designation</Label>&nbsp;&nbsp;<input type="text" id="design1" name="design1">
+                        </td>
+                        <td><Label>From</Label>&nbsp;&nbsp;<input type="date" id="from1" name="from1"></td>
+                        <td><Label>to</Label>&nbsp;&nbsp;<input type="date" id="tp1" name="tp1"></td>
+                        <td><input type="button" onclick='removeEdu("work1")' value="-"></td>
+                    </tr>
+                </table>
+                <!-- <input type="button" value="prev" onclick="wizard('workexperience','education')"> -->
+                <input type="button" value="save & next" onclick="loadworkexperience()">
+            </fieldset>
+
+            <fieldset class="box" id="language">
+                <legend>Language Known</legend>
+                <table id="langtable">
+                    <tr>
+                        <td><input type="hidden" name="lcounter" id="lcounter" value=2></td>
+                    <tr>
+                        <td colspan="5"><input type="button" style="float: right;" onclick="addlang()" value="+"></td>
+                    </tr>
+                    <tr id="lang">
+                        <td>
+                            <select id='lang1' name='lang1'>
+                                <option value="select">Select language</option>
+                                <option value="hindi">hindi</option>
+                                <option value="english">english</option>
+                                <option value="gujarati">gujarati</option>
+
+                            </select>
+                        </td>
+                        <td><input type="checkbox" id="read1" name="read1">&nbsp;&nbsp;<Label>read</Label></td>
+                        <td><input type="checkbox" id="write1" name="write1">&nbsp;&nbsp;<Label>write</Label>
+                        </td>
+                        <td><input type="checkbox" id="speak1" name="speak1">&nbsp;&nbsp;<Label>speak</Label>
+                        </td>
+                        <td><input type="button" onclick='removeEdu("lang1")' value="-"></td>
+                    </tr>
+                </table>
+                <!-- <input type="button" value="prev" onclick="wizard('language','workexperience')"> -->
+                <input type="button" value="save & next" onclick="loadlanguage()">
+            </fieldset>
+
+            <fieldset class="box" id="technology">
+                <legend>Technologies you know</legend>
+                <table id="techtable">
+                    <tr>
+                        <td><input type="hidden" name="tcounter" id="tcounter" value=2></td>
+                    <tr>
+                        <td colspan="5"><input type="button" style="float: right;" onclick="addtech()" value="+"></td>
+                    </tr>
+                    <tr id="techo">
+
+                        <td> <select id='tech1' name='tech1'>
+                                <option value="select">Select technology</option>
+                                <option value="php">php</option>
+                                <option value="mysql">mysql</option>
+                                <option value="lavavel">laravel</option>
+                                <option value="oracle">oracle</option>
+
+                            </select></td>
+                        <td><input type="radio" id="be1" name="teh1" value="beginer">&nbsp;&nbsp;<Label>Beginer</Label>
+                        </td>
+                        <td><input type="radio" id="mi1" name="teh1"
+                                value="Mideator">&nbsp;&nbsp;<Label>Mideator</Label></td>
+                        <td><input type="radio" id="ex1" name="teh1" value="Expert">&nbsp;&nbsp;<Label>Expert</Label>
+                        </td>
+                        <td><input type="button" onclick='removeEdu("tech1")' value="-"></td>
+                    </tr>
+
+                </table>
+                <!-- <input type="button" value="prev" onclick="wizard('technology','language')"> -->
+                <input type="button" value="save & next" onclick="loadtechnology()">
+            </fieldset>
+
+            <fieldset id="referencecontact">
+                <legend>
+                    Referance Contact
+                </legend>
+                <table>
+                    <tr>
+                        <td><Label>Name</Label>&nbsp;&nbsp;<input type="text" id="rename1" name="refre"></td>
+
+                        <td><Label>Contact Number</Label>&nbsp;&nbsp;<input type="text" maxlength="10" id="renum1"
+                                name="contect_no"></td>
+                        <td><Label>Relation</Label>&nbsp;&nbsp;<input type="text" id="rerela1" name="relation1">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><br></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <Label>Name</Label>&nbsp;&nbsp;<input type="text" id="rename2" name="refre2">
+                        </td>
+                        <td><Label>Contact Number</Label>&nbsp;&nbsp;<input type="text" maxlength="10" id="renum2"
+                                name="contect_no2"></td>
+                        <td><Label>Relation</Label>&nbsp;&nbsp;<input type="text" id="rerela2" name="relation2">
+                        </td>
+                    </tr>
+                </table>
+                <!-- <input type="button" value="prev" onclick="wizard('referencecontact','technology')"> -->
+                <input type="button" value="save & next" onclick="loadreferencecontact()">
+            </fieldset>
+            
+            <fieldset id="preferences">
+                <legend>
+                    Preferances
+                </legend>
+                <table>
+                    <tr>
+                        <td><label>Prefered location:</label>&nbsp;&nbsp;
+                            <select multiple name="loca">
+                                <option value="Item One">Item One</option>
+                                <option value="Item Two">Item Two</option>
+                                <option value="Item Three">Item Three</option>
+                            </select>
+                        </td>
+                        <td>
+                            <label>Notice period </label>&nbsp;&nbsp;<input type="text" id="np" name="n_per"><br><br>
+                            <label>Expacted CTC </label>&nbsp;&nbsp;<input type="text" id="e_ctc" name="e_ctc">
+                            <br><br>
+                            <label>Current CTC </label>&nbsp;&nbsp;<input type="text" id="c_ctc" name="c_ctc">
+                            <br><br>
+                        </td>
+                        <td>
+                            <label>Department:</label>&nbsp;&nbsp;
+                            <select name="dept">
+                                <option value="Design">Design</option>
+                                <option value="Marketing">marketing</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+                <!-- <input type="button" value="prev" onclick="wizard('preferences','referencecontact')"> -->
+                <input type="submit" value="submit" onclick="loadpreferences()">
+
+                
+            </fieldset>
+</form>
+<script>
+
+    /////////////////////////////////////////////////////////////////////////
+    // console.log("js");
+    var counter = 2;
+    var workcounter = 2;
+    // document.getElementById("ecounter").value = counter;
+    function addrow() {
+        var education_table = document.getElementById("mytable");
+        var row_count = education_table.rows.length;
+        var row = education_table.insertRow();
+        // alert(row_count);
+
+        row.id = "edu" + counter;
+        var cell1 = row.insertCell();
+        var cell2 = row.insertCell();
+        var cell3 = row.insertCell();
+        var cell4 = row.insertCell();
+        var cell5 = row.insertCell();
+
+        cell1.innerHTML =
+            "<br><label for='course" +
+            counter +
+            "'>Course name&nbsp;&nbsp;</label>" +
+            "<select id='course" +
+            counter +
+            "' name='course" +
+            counter +
+            "'>" +
+            "<option value='None'>None</option>" +
+            "<option value='ssc'>ssc</option>" +
+            " <option value='hsc'>hsc</option>" +
+            " <option value='bachelor'>bachelor</option>" +
+            "<option value='master'>master</option>" +
+            "</select>";
+        cell2.innerHTML =
+            "<label for='board_or_university" +
+            counter +
+            "'>University&nbsp;&nbsp;</label>" +
+            " <input type='text' size='10' id='board_or_university" +
+            counter +
+            "' name='uni" +
+            counter +
+            "'>";
+
+        cell3.innerHTML =
+            "<label for='pass_year" +
+            counter +
+            "'>Passing Year&nbsp;&nbsp;</label>" +
+            " <input type='text' size='10' id='pass_year" +
+            counter +
+            "' name='pss" +
+            counter +
+            "'>";
+
+        cell4.innerHTML =
+            "<label for='percentege" +
+            counter +
+            "'>Percentage&nbsp;&nbsp;</label>" +
+            " <input type='text' size='10' id='percentege" +
+            counter +
+            "' name='per" +
+            counter +
+            "'>";
+
+        cell5.innerHTML =
+            "<input type='button' id='edu" +
+            counter +
+            "' onclick='removeEdu(this.id)' value='-'>";
+
+        counter = counter + 1;
+        document.getElementById("ecounter").value = counter;
+        // console.log(document.getElementById("ecounter").value);
+    }
+
+    function removeEdu(n, d1) {
+        var td = event.target.parentNode;
+        var tr = td.parentNode;
+        n = n - 1;
+        //console.log((document.getElementById(d1).value = n));
+        // console.log(document.getElementById(d1.toString()).value);
+        console.log(d1);
+
+        var c = confirm("do you want to delete this row");
+        if (c === true) {
+            tr.parentNode.removeChild(tr);
+        } else {
+            event.preventDefault();
+        }
+
+        // var element = document.getElementById(n);
+        // var choice = confirm("Do you really went to deglete this record?");
+        // if (choice == true) {
+        //   element.parentNodeg.removeChild(element);
+        // }
+    }
+
+    function addwork() {
+        var x = document.getElementById("worktable");
+        var wrow = x.insertRow();
+        wrow.id = "work" + workcounter;
+        var wcell1 = wrow.insertCell();
+        var wcell2 = wrow.insertCell();
+        var wcell3 = wrow.insertCell();
+        var wcell4 = wrow.insertCell();
+        var wcell5 = wrow.insertCell();
+
+        wcell1.innerHTML =
+            "<br> <lable for='c_nm'" +
+            workcounter +
+            "'>Company Name&nbsp;&nbsp;</lable>" +
+            "<input type='text' id='c_nm" +
+            workcounter +
+            "' name='c_nm" +
+            workcounter +
+            "'>";
+        wcell2.innerHTML =
+            "<lable for='design" +
+            workcounter +
+            "deg'>degsignation&nbsp;&nbsp;</lable>" +
+            "<input type='text' id='design" +
+            workcounter +
+            "' name='design" +
+            workcounter +
+            "'>";
+        wcell3.innerHTML =
+            "<lable for='from" +
+            workcounter +
+            "'>From&nbsp;&nbsp;</lable>" +
+            "<input type='date' id='from" +
+            workcounter +
+            "' name='from" +
+            workcounter +
+            "'>";
+        wcell4.innerHTML =
+            "<lable for='tp" +
+            workcounter +
+            "'>to&nbsp;&nbsp;</lable>" +
+            "<input type='date' id='tp" +
+            workcounter +
+            "' name='tp" +
+            workcounter +
+            "'>";
+        wcell5.innerHTML =
+            "<input type='button' id='abc" +
+            workcounter +
+            "'  onclick='removeEdu(this.id)' value='-'>";
+
+        workcounter = workcounter + 1;
+
+        document.getElementById("wcounter").value = workcounter;
+    }
+    var langcounter = 2;
+    function addlang() {
+        var x = document.getElementById("langtable");
+        var lrow = x.insertRow();
+        lrow.id = "langs" + langcounter;
+        var lcell1 = lrow.insertCell();
+        var lcell2 = lrow.insertCell();
+        var lcell3 = lrow.insertCell();
+        var lcell4 = lrow.insertCell();
+        var lcell5 = lrow.insertCell();
+
+        lcell1.innerHTML =
+            "<br> <select id='lang" +
+            langcounter +
+            "' name='lang" +
+            langcounter +
+            "'>" +
+            "<option value='select'>Select language</option>" +
+            "<option value='hindi'>hindi</option>" +
+            " <option value='english'>english</option>" +
+            " <option value='gujarati'>gujarati</option>" +
+            "</select>";
+        lcell2.innerHTML =
+            "<input type='checkbox' id='read" +
+            langcounter +
+            "' name='read" +
+            langcounter +
+            "' >&nbsp;&nbsp;<Label>read</Label>";
+        lcell3.innerHTML =
+            "<input type='checkbox' id='write" +
+            langcounter +
+            "' name='write" +
+            langcounter +
+            "' >&nbsp;&nbsp;<Label>write</Label>";
+        lcell4.innerHTML =
+            "<input type='checkbox' id='speak" +
+            langcounter +
+            "' name='speak" +
+            langcounter +
+            "' >&nbsp;&nbsp;<Label>speak</Label>";
+        lcell5.innerHTML =
+            "<input type='button' id='langs" +
+            langcounter +
+            "'  onclick='removeEdu(this.id)' value='-'>";
+
+        langcounter = langcounter + 1;
+        document.getElementById("lcounter").value = langcounter;
+    }
+
+    var techcounter = 2;
+    function addtech() {
+        var x = document.getElementById("techtable");
+        var trow = x.insertRow();
+        trow.id = "techo" + techcounter;
+        var tcell1 = trow.insertCell();
+        var tcell2 = trow.insertCell();
+        var tcell3 = trow.insertCell();
+        var tcell4 = trow.insertCell();
+        var tcell5 = trow.insertCell();
+
+        tcell1.innerHTML =
+            "<br> <select id='tech" +
+            techcounter +
+            "' name='tech" +
+            techcounter +
+            "'>" +
+            "<option value='select'>Select technology</option>" +
+            "<option value='php'>php</option>" +
+            "<option value='mysql'>mysql</option>" +
+            "<option value='lavavel'>laravel</option>" +
+            "<option value='oracle'>oracle</option>" +
+            "</select>";
+        tcell2.innerHTML =
+            "<input type='radio' id='be" +
+            techcounter +
+            "'name='teh" +
+            techcounter +
+            "'  >&nbsp;&nbsp;<Label>Beginer</Label>";
+        tcell3.innerHTML =
+            "<input type='radio' id='mi" +
+            techcounter +
+            "'name='teh" +
+            techcounter +
+            "'  >&nbsp;&nbsp;<Label>Midegator</Label";
+        tcell4.innerHTML =
+            "<input type='radio' id='ex" +
+            techcounter +
+            "'name='teh" +
+            techcounter +
+            "'>&nbsp;&nbsp;<Label>Expert</Label>";
+        tcell5.innerHTML =
+            "<input type='button' id='b" +
+            techcounter +
+            "'  onclick='removeEdu(this.id)' value='-'>";
+
+        techcounter = techcounter + 1;
+        document.getElementById("tcounter").value = techcounter;
+    }
+
+    function validateform() {
+        var x = document.getElementById("fname").value;
+        var y = document.getElementById("lname").value;
+        var letters = /^[A-Za-z]+$/;
+        if (x == "" || x == null) {
+            console.log("jsdneflsnelfdsnklfdnlki");
+            document.getElementById("fname").innerHTML = "can not be blank";
+            alert("enter first name");
+            document.getElementById("fname").focus();
+            return false;
+        } else if (!x.match(letters)) {
+            document.getElementById("fname").innerHTML = "enter only alphabets";
+
+            alert("enter wrong first name");
+            document.getElementById("fname").focus();
+            return false;
+        }
+
+        if (y == "" || y == null) {
+            document.getElementById("lname").innerHTML = "can not be blank";
+
+            alert("enter last name");
+            document.getElementById("lname").focus();
+            return false;
+        } else if (!y.match(letters)) {
+            document.getElementById("lname").innerHTML = "enter only alphabets";
+
+            alert("enter wrong last name");
+            document.getElementById("lname").focus();
+            return false;
+        }
+
+        var y1 = document.getElementById("deg").value;
+        if (y1 == "" || y1 == null) {
+            document.getElementById("deg").innerHTML = "can not be blank";
+            alert("enter degsignation");
+            document.getElementById("deg").focus();
+            return false;
+        }
+        if (!y1.match(letters)) {
+            document.getElementById("deg").innerHTML = "enter only alphabets";
+
+            alert("enter only alphabets");
+            document.getElementById("deg").focus();
+            return false;
+        }
+
+        var y = document.getElementById("add1").value;
+        if (y == "" || y == null) {
+            document.getElementById("add1").innerHTML = "can not be blank";
+
+            document.getElementById("add1").focus();
+            alert("enter address");
+            return false;
+        }
+
+        var y = document.getElementById("email").value;
+        var emailletters =
+            /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-za-z]{2,3})$/;
+        if (y == "" || y == null) {
+            document.getElementById("email").innerHTML = "can not be blank";
+
+            alert("enter email");
+            document.getElementById("email").focus();
+            return false;
+        } else if (!y.match(emailletters)) {
+            document.getElementById("email").innerHTML = "enter wrong email";
+
+            alert("enter proper email");
+            document.getElementById("email").focus();
+            return false;
+        }
+
+        var y = document.getElementById("add2").value;
+        if (y == "" || y == null) {
+            document.getElementById("add2").innerHTML = "can not be blank";
+
+            document.getElementById("add2").focus();
+            alert("enter address");
+            return false;
+        }
+
+        var y = document.getElementById("phn_no").value;
+        var phoneletters = /^\d{10}$/;
+        if (y == "" || y == null) {
+            document.getElementById("phn_no").innerHTML = "can not be blank";
+
+            alert("enter phone number");
+            document.getElementById("phn_no").focus();
+            return false;
+        } else if (!y.match(phoneletters)) {
+            document.getElementById("phn_no").innerHTML = "enter wrong phone number";
+
+            alert("enter Proper phone number");
+            document.getElementById("phn_no").focus();
+            return false;
+        }
+
+        var y = document.getElementById("ci").value;
+        if (y == "" || y == null) {
+            document.getElementById("ci").innerHTML = "can not be blank";
+
+            alert("enter city");
+            document.getElementById("ci").focus();
+            return false;
+        } else if (!y.match(letters)) {
+            document.getElementById("ci").innerHTML = "enter only alphabets";
+
+            document.getElementById("ci").focus();
+            alert("enter Proper city");
+            return false;
+        }
+
+        var genm = document.getElementById("genm");
+        var genf = document.getElementById("genf");
+        if (genm.checked == false && genf.checked == false) {
+            document.getElementById("genm").innerHTML = "enter gendernm";
+
+            alert("You must select genm");
+            return false;
+        }
+
+        var y = document.getElementById("zip").value;
+        var zipletters = /^\d{6}$/;
+        if (y == "" || y == null) {
+            document.getElementById("zip").innerHTML = "can not be blank";
+
+            alert("enter zipcodeg");
+            document.getElementById("zip").focus();
+            return false;
+        } else if (!y.match(zipletters)) {
+            document.getElementById("zip").innerHTML = "enter wrong zip codeg";
+
+            alert("enter Proper zipcodr");
+            document.getElementById("zip").focus();
+            return false;
+        }
+
+        for (let i = 1; i < counter; i++) {
+            console.log(i);
+            var course = document.getElementById("course" + i).value;
+            if (course == "None") {
+                alert("select course");
+                document.getElementById("course" + i).focus();
+                return false;
+            } else {
+                var aaa = document.getElementById("board_or_university" + i).value;
+                var pass = document.getElementById("pass_year" + i).value;
+                var per = document.getElementById("percentege" + i).value;
+                if (aaa == "" || aaa == null) {
+                    alert("enter univercity name");
+                    document.getElementById("board_or_university" + i).focus();
+                    return false;
+                }
+                if (pass == "" || pass == null) {
+                    alert("enter passing year");
+                    document.getElementById("pass_year" + i).focus();
+                    return false;
+                }
+                if (per == "" || per == null) {
+                    alert("enter percentage");
+                    document.getElementById("percentege" + i).focus();
+                    return false;
+                }
+            }
+        }
+        for (let i = 1; i < workcounter; i++) {
+            console.log(i);
+            let work = document.getElementById("com" + i).value;
+            console.log(work);
+            if (work.length > 1) {
+                var des = document.getElementById("des" + i).value;
+                var from = document.getElementById("f" + i).value;
+                var to = document.getElementById("t" + i).value;
+
+                if (des == "" || des == null) {
+                    alert("enter Designation");
+                    document.getElementById("des" + i).focus();
+                    return false;
+                }
+                if (from == "" || from == null) {
+                    alert("enter from data");
+                    document.getElementById("f" + i).focus();
+                    return false;
+                }
+                if (to == "" || to == null) {
+                    alert("enter to date");
+                    document.getElementById("t" + i).focus();
+                    return false;
+                }
+                var eDate = new Date(to);
+                var sDate = new Date(from);
+                if (sDate > eDate) {
+                    alert(
+                        "Please ensure that the End Date is greater than or equal to the Start Date."
+                    );
+                    document.getElementById("f" + i).focus();
+                    return false;
+                }
+            }
+        }
+
+        for (let temp = 1; temp < langcounter; temp++) {
+            var lan = document.getElementById("lang" + temp).value;
+            if (lan == "select") {
+                alert("select language");
+                document.getElementById("lang" + temp).focus();
+                return false;
+            } else {
+                var read = document.getElementById("re" + temp);
+                var write = document.getElementById("wr" + temp);
+                var speack = document.getElementById("se" + temp);
+                if (
+                    read.checked == false &&
+                    write.checked == false &&
+                    speack.checked == false
+                ) {
+                    alert("check any value");
+                    document.getElementById("re" + temp).focus();
+                    return false;
+                }
+            }
+        }
+
+        for (let i = 1; i < techcounter; i++) {
+            var y = document.getElementById("tech" + i).value;
+            if (y == "select") {
+                alert("select technology");
+                document.getElementById("tech" + i).focus();
+                return false;
+            } else {
+                var a = document.getElementById("be" + i);
+                var z = document.getElementById("mi" + i);
+                var w = document.getElementById("ex" + i);
+                if (a.checked == false && z.checked == false && w.checked == false) {
+                    alert("select technology experience");
+
+                    return false;
+                }
+            }
+        }
+
+        var re = document.getElementById("np").value;
+        if (re == "" || re == null) {
+            document.getElementById("np").innerHTML = "can not be blank";
+
+            alert("enter Notice period");
+            document.getElementById("np").focus();
+            return false;
+        }
+        var re = document.getElementById("rename1").value;
+        if (re == "" || re == null) {
+            document.getElementById("rename1").innerHTML = "can not be blank";
+
+            alert("enter name");
+            document.getElementById("rename1").focus();
+            return false;
+        }
+
+        var re = document.getElementById("renum1").value;
+        if (re == "" || re == null) {
+            document.getElementById("renum1").innerHTML = "can not be blank";
+
+            alert("enter contect number");
+            document.getElementById("renum1").focus();
+            return false;
+        }
+        var re = document.getElementById("rerela1").value;
+        if (re == "" || re == null) {
+            document.getElementById("rerela1").innerHTML = "can not be blank";
+
+            alert("enter relation");
+            document.getElementById("rerela1").focus();
+            return false;
+        }
+        var re = document.getElementById("rename2").value;
+        if (re == "" || re == null) {
+            document.getElementById("rename2").innerHTML = "can not be blank";
+
+            alert("enter name");
+            document.getElementById("rename2").focus();
+            return false;
+        }
+        var re = document.getElementById("renum2").value;
+        if (re == "" || re == null) {
+            document.getElementById("renum2").innerHTML = "can not be blank";
+
+            alert("enter contect number");
+            document.getElementById("renum2").focus();
+            return false;
+        }
+        var re = document.getElementById("rerela2").value;
+        if (re == "" || re == null) {
+            document.getElementById("rerela2").innerHTML = "can not be blank";
+
+            alert("enter relation");
+            document.getElementById("rerela2").focus();
+            return false;
+        }
+        var re = document.getElementById("e_ctc").value;
+        if (re == "" || re == null) {
+            document.getElementById("e_ctc").innerHTML = "can not be blank";
+
+            alert("enter expected ctc");
+            document.getElementById("e_ctc").focus();
+            return false;
+        }
+        var re = document.getElementById("c_ctc").value;
+        if (re == "" || re == null) {
+            document.getElementById("c_ctc").innerHTML = "can not be blank";
+
+            alert("enter current ctc");
+            document.getElementById("c_ctc").focus();
+            return false;
+        }
+
+        var y = document.getElementById("f1");
+        var valid_size = 1 * 1000 * 3000;
+        if (y.files.length != 0) {
+            file_size = file.files[0].size;
+
+            if (file_size > valid_size) {
+                alert("file size should be less then 1 mb");
+                return false;
+            }
+        }
+    }
+
+    // /////////////////////////////////////////////////////////////////////
+
+    document.getElementById('education').style.display = "none";
+    document.getElementById('workexperience').style.display = "none";
+    document.getElementById('language').style.display = "none";
+    document.getElementById('technology').style.display = "none";
+    document.getElementById('referencecontact').style.display = "none";
+    document.getElementById('preferences').style.display = "none";
+
+    function wizard(curr, next) {
+
+        document.getElementById(curr).style.display = "none";
+        document.getElementById(next).style.display = "block";
+    }
+
+
+    function loadbasic() {
+
+        let fname = document.getElementById('fname').value;
+        let lname = document.getElementById('lname').value;
+        let deg = document.getElementById('deg').value;
+        let add1 = document.getElementById('add1').value;
+        let add2 = document.getElementById('add2').value;
+        let email = document.getElementById('email').value;
+        let phn_no = document.getElementById('phn_no').value;
+        let state = document.getElementById('state').value;
+        let ci = document.getElementById('ci').value;
+        let zip = document.getElementById('zip').value;
+        let rela = document.getElementById('rela').value;
+        let bod = document.getElementById('bod').value;
+        let gender = document.getElementById('genm').checked ? 'male' : 'female';
+
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function () {
+            document.getElementById("jobid").value = this.responseText;
+        }
+        xhttp.open("GET", "/basic?fname=" + fname + "&lname=" + lname + "&deg=" + deg + "&add1=" + add1 + "&add2=" + add2 + "&email=" + email + "&phn_no=" + phn_no + "&state=" + state + "&ci=" + ci + "&zip=" + zip + "&rela=" + rela + "&bod=" + bod + "&gen=" + gender, true);
+        xhttp.send();
+
+        wizard('basicdetail', 'education')
+    }
+
+    function loadeducation() {
+
+        let jobid = document.getElementById('jobid').value;
+        let ecounter = document.getElementById('ecounter').value;
+        // console.log(ecounter);
+
+        let edustr =
+            "INSERT INTO `edu_detail`( `course`,`university`, `passingyear`, `percentage`, `job_id`)  VALUES ";
+
+        let course = [];
+        let university = [];
+        let passyear = [];
+        let percentage = [];
+        let a, b, c, d;
+        for (let i = 1; i < ecounter; i++) {
+            a = 'course' + i
+            b = 'board_or_university' + i
+            c = 'pass_year' + i
+            d = 'percentege' + i
+
+            course.push(document.getElementById(a).value);
+            university.push(document.getElementById(b).value);
+            passyear.push(document.getElementById(c).value);
+            percentage.push(document.getElementById(d).value);
+        }
+
+        let eduquery = "";
+
+        for (let i = 0; i < ecounter - 1; i++) {
+            eduquery += "('" + course[i] + "',";
+            eduquery += "'" + university[i] + "',";
+            eduquery += "'" + passyear[i] + "',";
+            eduquery += "'" + percentage[i] + "',";
+            eduquery += "'" + jobid + "'),";
+        }
+
+        eduquery = eduquery.slice(0, eduquery.length - 1);
+
+        let finaleduquery = edustr + eduquery;
+        // console.log(finaleduquery);
+
+        const xhttp = new XMLHttpRequest();
+
+        xhttp.open("GET", "/educationdetail?finaleduquery=" + finaleduquery, true);
+        xhttp.send();
+
+        wizard('education', 'workexperience')
+    }
+
+    function loadworkexperience() {
+
+        let jobid = document.getElementById('jobid').value;
+        let wcounter = document.getElementById('wcounter').value;
+
+        let workstr = "",
+            workquery = "",
+            finalworkquery = "";
+
+        workstr =
+            "INSERT INTO `work_exp`(`c_name`, `designation`, `from_date`, `end_date`, `job_id`) VALUES ";
+
+        let c_name = [];
+        let designation = [];
+        let from_date = [];
+        let end_date = [];
+        let e, f, g, h;
+
+        for (let i = 1; i < wcounter; i++) {
+            e = 'c_nm' + i
+            f = 'design' + i
+            g = 'from' + i
+            h = 'tp' + i
+            // console.log(e, f, g, h);
+            c_name.push(document.getElementById(e).value);
+            designation.push(document.getElementById(f).value);
+            from_date.push(document.getElementById(g).value);
+            end_date.push(document.getElementById(h).value);
+        }
+        console.log(c_name, designation, from_date, end_date);
+
+        for (let i = 0; i < wcounter - 1; i++) {
+            workquery += "('" + c_name[i] + "',";
+            workquery += "'" + designation[i] + "',";
+            workquery += "'" + from_date[i] + "',";
+            workquery += "'" + end_date[i] + "',";
+            workquery += "'" + jobid + "'),";
+        }
+
+        workquery = workquery.slice(0, workquery.length - 1);
+
+        finalworkquery = workstr + workquery;
+        // console.log(finalworkquery);
+
+
+        const xhttp = new XMLHttpRequest();
+
+        xhttp.open("GET", "/workexperience?finalworkquery=" + finalworkquery, true);
+        xhttp.send();
+
+
+        wizard('workexperience', 'language')
+    }
+
+    function loadlanguage() {
+
+        let jobid = document.getElementById('jobid').value;
+        let lcounter = document.getElementById('lcounter').value;
+
+        let langstr = "",
+            langquery = "",
+            finallangquery = "";
+
+        langstr =
+            "INSERT INTO `lang_known`(`lang`,`readdata`, `writedata`, `speakdata`,`job_id`) VALUES  ";
+
+        let lang = [];
+        let readdata = [];
+        let writedata = [];
+        let speakdata = [];
+        let e, f, g, h;
+
+        for (let i = 1; i < lcounter; i++) {
+            e = 'lang' + i
+            f = 'read' + i
+            g = 'write' + i
+            h = 'speak' + i
+            // console.log(e, f, g, h);
+            lang.push(document.getElementById(e).value);
+            readdata.push(document.getElementById(f).value);
+            writedata.push(document.getElementById(g).value);
+            speakdata.push(document.getElementById(h).value);
+
+        }
+        for (let i = 0; i < lcounter - 1; i++) {
+            langquery += "('" + lang[i] + "',";
+            langquery += "'" + readdata[i] + "',";
+            langquery += "'" + writedata[i] + "',";
+            langquery += "'" + speakdata[i] + "',";
+            langquery += "'" + jobid + "'),";
+        }
+
+        langquery = langquery.slice(0, langquery.length - 1);
+        finallangquery = langstr + langquery;
+        // console.log(finallangquery);
+
+        const xhttp = new XMLHttpRequest();
+
+        xhttp.open("GET", "/language?finallangquery=" + finallangquery, true);
+        xhttp.send();
+
+        wizard('language', 'technology')
+
+    }
+
+    function loadtechnology() {
+
+        let jobid = document.getElementById('jobid').value;
+        let tcounter = document.getElementById('tcounter').value;
+
+        let techstr =
+            "   INSERT INTO `tech_known`(`techname`, `techmode`, `job_id`) VALUES ";
+        let techquery = "",
+            finaltechquery = "";
+
+        let techname = [];
+        let techmode = [];
+
+        let e, f, g, h;
+
+        for (let i = 1; i < tcounter; i++) {
+            e = 'tech' + i
+            f = 'be' + i
+            g = 'mi' + i
+            h = 'ex' + i
+            // console.log(e, f, g, h);
+            techname.push(document.getElementById(e).value);
+            if (document.getElementById(f).checked) {
+                techmode.push('Beginer')
+            }
+            if (document.getElementById(g).checked) {
+                techmode.push('Mideator')
+            }
+            if (document.getElementById(h).checked) {
+                techmode.push('Expert')
+            }
+
+        }
+
+
+        for (let i = 0; i < tcounter - 1; i++) {
+            techquery += "('" + techname[i] + "',";
+            techquery += "'" + techmode[i] + "',";
+            techquery += "'" + jobid + "'),";
+        }
+
+        techquery = techquery.slice(0, techquery.length - 1);
+
+        finaltechquery = techstr + techquery;
+        // console.log(finaltechquery);
+
+        const xhttp = new XMLHttpRequest();
+
+        xhttp.open("GET", "/technology?finaltechquery=" + finaltechquery, true);
+        xhttp.send();
+
+        wizard('technology', 'referencecontact')
+    }
+
+    function loadreferencecontact() {
+
+
+        let jobid = document.getElementById('jobid').value;
+
+        let finalrefquery =
+            " INSERT INTO `reference_contact`(`ref_name`, `contact_number`, `relation`, `job_id`) VALUES " +
+            " ('" +
+            document.getElementById('rename1').value +
+            "'," +
+            document.getElementById('renum1').value +
+            ",'" +
+            document.getElementById('rerela1').value +
+            "'," +
+            jobid +
+            "),('" +
+            document.getElementById('rename2').value +
+            "'," +
+            document.getElementById('renum2').value +
+            ",'" +
+            document.getElementById('rerela2').value +
+            "'," +
+            jobid +
+            ")";
+        // console.log(finalrefquery);
+        const xhttp = new XMLHttpRequest();
+
+        xhttp.open("GET", "/referencecontact?finalrefquery=" + finalrefquery, true);
+        xhttp.send();
+
+        wizard('referencecontact', 'preferences')
+
+    }
+
+    function loadpreferences(){
+        let jobid = document.getElementById('jobid').value;
+
+        let finalpreferences =
+      "INSERT INTO `preferences`( `notice_period`, `expected_ctc`, `current_ctc`, `department`, `prefered_location`, `job_id`) VALUES ('" +
+      document.getElementById('jobid').value +
+      "','" +
+      document.getElementById('jobid').value +
+      "','" +
+      document.getElementById('jobid').value +
+      "','" +
+      document.getElementById('jobid').value +
+      "','" +
+      document.getElementById('jobid').value +
+      "','" +
+      jobid +
+      " ')";
+    // console.log(finalpreferences);
+
+    const xhttp = new XMLHttpRequest();
+
+    xhttp.open("GET", "/preferences?finalpreferences=" + finalpreferences, true);
+    xhttp.send();
+
+   
+
+        }
+
+</script>
+
+</body>
